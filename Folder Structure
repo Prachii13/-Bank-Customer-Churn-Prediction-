@@ -1,0 +1,5 @@
+bank-customer-churn-knn/
+├── churn_knn_classifier.ipynb
+├── BankChurners.csv
+├── README.md
+└── requirements.txt
