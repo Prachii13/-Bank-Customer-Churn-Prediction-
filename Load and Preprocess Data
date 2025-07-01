@@ -1,0 +1,15 @@
+df = pd.read_csv('BankChurners.csv')
+df = df[df['Attrition_Flag'].isin(['Existing Customer', 'Attrited Customer'])]
+
+# Encode target
+df['Attrition_Flag'] = df['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0)
+
+# Select useful features
+features = ['Customer_Age', 'Total_Relationship_Count', 'Months_on_book', 
+            'Total_Trans_Ct', 'Total_Trans_Amt', 'Credit_Limit', 'Avg_Utilization_Ratio']
+X = df[features]
+y = df['Attrition_Flag']
+
+# Normalize features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
